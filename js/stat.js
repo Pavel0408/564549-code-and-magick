@@ -67,4 +67,7 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillRect(histogramX, HISTOGRAM_Y - HISTROGRAM_GAP * 2 - rectHeigth, RECT_WIDTH, rectHeigth);
     histogramX += HISTOGRAM_COLUMN_WDTH;
   }
+  histogramX = CLOUD_X + 50;
+  titleGapY = 20;
 };
+
