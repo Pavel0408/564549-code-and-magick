@@ -33,14 +33,17 @@ var getMaxElement = function (arr) {
 
 var getRandomBlue = function () {
   var addRandom = Math.floor(Math.random() * 255);
-  return 'rgba(0,0,' + addRandom + ',1)';
+  return 'rgb(0,0,' + addRandom + ')';
 };
 
 window.renderStatistics = function (ctx, players, times) {
   var playersLength;
   var histogramX = CLOUD_X + 50;
   var titleGapY = 20;
+  var maxTime;
+  var rectHeigth;
 
+  //  рисуем облако
   renderCloud(ctx, CLOUD_X + SHADOW_GAP, CLOUD_Y + SHADOW_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -51,14 +54,16 @@ window.renderStatistics = function (ctx, players, times) {
     titleGapY += titleGapY;
   };
 
+  //  выводми заголовки
   makeTitle('Ура вы победили!');
   makeTitle('Список рузультатов:');
 
-  var maxTime = getMaxElement(times);
+  maxTime = getMaxElement(times);
   playersLength = players.length;
 
+  //  рисуем гистограму
   for (var i = 0; i < playersLength; i++) {
-    var rectHeigth = HISTOGRAM_HEIGHT * times[i] / maxTime;
+    rectHeigth = HISTOGRAM_HEIGHT * times[i] / maxTime;
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], histogramX, HISTOGRAM_Y);
     ctx.fillText(Math.round(times[i]), histogramX, HISTOGRAM_Y - rectHeigth - HISTROGRAM_GAP * 3);
