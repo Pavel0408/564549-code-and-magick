@@ -24,6 +24,7 @@ var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
   for (var i = 0; i < arr.length; i++) {
+
     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
@@ -48,8 +49,6 @@ window.renderStatistics = function (ctx, players, times) {
     titleGapY += titleGapY;
   };
 
-  ctx.fillStyle = '#000';
-
   makeTitle('Ура вы победили!');
   makeTitle('Список рузультатов:');
 
@@ -61,12 +60,15 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillText(players[i], histogramX, HISTOGRAM_Y);
     ctx.fillText(Math.round(times[i]), histogramX, HISTOGRAM_Y - rectHeigth - HISTROGRAM_GAP * 3);
     ctx.fillStyle = getRandomBlue();
+
     if (players[i] === YOUR_NAME) {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     }
+
     ctx.fillRect(histogramX, HISTOGRAM_Y - HISTROGRAM_GAP * 2 - rectHeigth, RECT_WIDTH, rectHeigth);
     histogramX += HISTOGRAM_COLUMN_WDTH;
   }
+
   histogramX = CLOUD_X + 50;
   titleGapY = 20;
 };
