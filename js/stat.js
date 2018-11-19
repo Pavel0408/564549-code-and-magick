@@ -6,9 +6,7 @@ var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var SHADOW_GAP = 10;
 var TITLE_GAP_X = 60;
-var titleGapY = 20;
 var HISTOGRAM_Y = 265;
-var histogramX = CLOUD_X + 50;
 var HISTOGRAM_HEIGHT = 150;
 var YOUR_NAME = 'Вы';
 var HISTROGRAM_GAP = 10;
@@ -39,6 +37,10 @@ var getRandomBlue = function () {
 };
 
 window.renderStatistics = function (ctx, players, times) {
+  var playersLength;
+  var histogramX = CLOUD_X + 50;
+  var titleGapY = 20;
+
   renderCloud(ctx, CLOUD_X + SHADOW_GAP, CLOUD_Y + SHADOW_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -53,8 +55,9 @@ window.renderStatistics = function (ctx, players, times) {
   makeTitle('Список рузультатов:');
 
   var maxTime = getMaxElement(times);
+  playersLength = players.length;
 
-  for (var i = 0; i < players.length; i++) {
+  for (var i = 0; i < playersLength; i++) {
     var rectHeigth = HISTOGRAM_HEIGHT * times[i] / maxTime;
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], histogramX, HISTOGRAM_Y);
@@ -68,8 +71,5 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillRect(histogramX, HISTOGRAM_Y - HISTROGRAM_GAP * 2 - rectHeigth, RECT_WIDTH, rectHeigth);
     histogramX += HISTOGRAM_COLUMN_WDTH;
   }
-
-  histogramX = CLOUD_X + 50;
-  titleGapY = 20;
 };
 
