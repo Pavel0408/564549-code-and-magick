@@ -13,11 +13,14 @@ var HISTROGRAM_GAP = 10;
 var RECT_WIDTH = 40;
 var HISTOGRAM_COLUMN_WDTH = 90;
 
+
+//  функция отрисовки облака
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+//  ищем максимальный элемент в массиве
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
@@ -31,6 +34,7 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+//  случайный синий
 var getRandomBlue = function () {
   var addRandom = Math.floor(Math.random() * 255);
   return 'rgb(0,0,' + addRandom + ')';
@@ -47,6 +51,7 @@ window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + SHADOW_GAP, CLOUD_Y + SHADOW_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
+  //  функция для вывода заголовка
   var makeTitle = function (text) {
     ctx.font = '16px PT Mono';
     ctx.fillStyle = '#000';
@@ -67,11 +72,8 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], histogramX, HISTOGRAM_Y);
     ctx.fillText(Math.round(times[i]), histogramX, HISTOGRAM_Y - rectHeigth - HISTROGRAM_GAP * 3);
-    ctx.fillStyle = getRandomBlue();
 
-    if (players[i] === YOUR_NAME) {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    }
+    ctx.fillStyle = players[i] === YOUR_NAME ? 'rgba(255, 0, 0, 1)' : getRandomBlue();
 
     ctx.fillRect(histogramX, HISTOGRAM_Y - HISTROGRAM_GAP * 2 - rectHeigth, RECT_WIDTH, rectHeigth);
     histogramX += HISTOGRAM_COLUMN_WDTH;
