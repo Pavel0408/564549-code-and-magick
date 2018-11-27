@@ -1,4 +1,5 @@
 'use strict';
+var WIZARDS_QUANTITY = 4;
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -16,14 +17,44 @@ var setupOpen = function () {
 };
 
 //  массивы с моковыми даннми для отрисовки волшебников
-var wizardsNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+var wizardsNames = [
+  'Иван',
+  'Хуан Себастьян',
+  'Мария',
+  'Кристоф',
+  'Виктор',
+  'Юлия',
+  'Люпита',
+  'Вашингтон'
+];
 
-var wizardsSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var wizardsSurnames = [
+  'да Марья',
+  'Верон',
+  'Мирабелла',
+  'Вальц',
+  'Онопко',
+  'Топольницкая',
+  'Нионго',
+  'Ирвинг'
+];
 
-var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var coatColors = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
+];
 
-var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
-var WIZARDS_QUANTITY = 4;
+var eyesColors = [
+  'black',
+  'red',
+  'blue',
+  'yellow',
+  'green'
+];
 
 //  показываем попап
 setupOpen();
