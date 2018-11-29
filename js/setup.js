@@ -1,6 +1,7 @@
 'use strict';
 var WIZARDS_QUANTITY = 4;
-
+var SETUP_OPEN = document.querySelector('.setup-open');
+var SETUP_CLOSE = document.querySelector('.setup-close');
 //  массивы с моковыми даннми для отрисовки волшебников
 var wizardsNames = [
   'Иван',
@@ -43,7 +44,7 @@ var eyesColors = [
 
 var fragment = document.createDocumentFragment();
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
@@ -52,13 +53,22 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .querySelector('.setup-similar-item');
 
 //  функция для показа попапа
-var setup = document.querySelector('.setup');
 var setupOpen = function () {
-  setup.classList.remove('hidden');
+  userDialog.classList.remove('hidden');
+  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  SETUP_CLOSE.addEventListener('click', setupClose);
 };
 
+var setupClose = function () {
+  userDialog.classList.add('hidden');
+  userDialog.querySelector('.setup-similar').classList.add('hidden');
+};
+
+// функция для закрытия попапа
+
 //  показываем попап
-setupOpen();
+SETUP_OPEN.addEventListener('click', setupOpen);
+
 
 // функция для отрисовки похожих волшебников
 var showSimilarWizards = function () {
@@ -102,7 +112,6 @@ var showSimilarWizards = function () {
   // добавляем волшебников на страницу
   similarListElement.appendChild(fragment);
 
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
 };
 
 //  запускаем отрисовку похожих волшебников
