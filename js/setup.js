@@ -4,6 +4,14 @@ var SETUP_OPEN = document.querySelector('.setup-open');
 var SETUP_CLOSE = document.querySelector('.setup-close');
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
+var WIZARD_EYES = document.querySelector('.wizard-eyes');
+var WIZARD_COAT = document.querySelector('.wizard-coat');
+var FIREBALLS = document.querySelector('.setup-fireball-wrap');
+var COAT_COLOR_INPUT = document.querySelector('input[name=coat-color]');
+var FIREBALL_COLOR_INPUT = document.querySelector('input[name=fireball-color]');
+var EYES_COLOR_INPUT = document.querySelector('input[name=eyes-color]');
+
+
 //  массивы с моковыми даннми для отрисовки волшебников
 var wizardsNames = [
   'Иван',
@@ -44,6 +52,14 @@ var eyesColors = [
   'green'
 ];
 
+var fireballColors = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
 var fragment = document.createDocumentFragment();
 var userDialog = document.querySelector('.setup');
 
@@ -53,6 +69,12 @@ var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
+
+//  поиск случайного элемента в массиве
+var randomIndex = function (arr) {
+  return Math.floor(Math.random() * arr.length);
+};
+
 
 //  функция для показа попапа
 var setupOpen = function () {
@@ -67,14 +89,8 @@ var setupClose = function () {
   userDialog.classList.add('hidden');
   userDialog.querySelector('.setup-similar').classList.add('hidden');
   document.removeEventListener('keydown', onSetupEscPress);
-
 };
 
-var onSetupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    setupClose();
-  }
-};
 
 //  показываем попап
 SETUP_OPEN.addEventListener('click', setupOpen);
@@ -83,6 +99,13 @@ SETUP_OPEN.addEventListener('keydown', function (evt) {
     setupOpen();
   }
 });
+
+// закрываем попап с клавиатуры
+var onSetupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    setupClose();
+  }
+};
 
 SETUP_CLOSE.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
@@ -99,11 +122,6 @@ var showSimilarWizards = function () {
   var similarCoatColors = coatColors.slice();
   var similarEyesColors = eyesColors.slice();
   var similarWizards = [];
-
-  //  поиск случайного элемента в массиве
-  var randomIndex = function (arr) {
-    return Math.floor(Math.random() * arr.length);
-  };
 
   // отрисовываем объект волшебника в HTML
   var renderWizard = function (wizard) {
@@ -133,6 +151,28 @@ var showSimilarWizards = function () {
   similarListElement.appendChild(fragment);
 
 };
+
+// функция смены цветов мантии, глаз, фаерболов по клику;
+var colorChange = function (elem, arr, input) {
+  var randomColor = arr[randomIndex(arr)];
+  elem.style.fill = randomColor;
+  elem.style.background = randomColor;
+  input.value = randomColor;
+};
+
+
+WIZARD_EYES.addEventListener('click', function () {
+  colorChange(WIZARD_EYES, eyesColors, EYES_COLOR_INPUT);
+});
+
+WIZARD_COAT.addEventListener('click', function () {
+  colorChange(WIZARD_COAT, coatColors, COAT_COLOR_INPUT);
+});
+
+FIREBALLS.addEventListener('click', function () {
+  colorChange(FIREBALLS, fireballColors, FIREBALL_COLOR_INPUT);
+});
+
 
 //  запускаем отрисовку похожих волшебников
 showSimilarWizards();
