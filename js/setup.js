@@ -2,6 +2,8 @@
 var WIZARDS_QUANTITY = 4;
 var SETUP_OPEN = document.querySelector('.setup-open');
 var SETUP_CLOSE = document.querySelector('.setup-close');
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 //  массивы с моковыми даннми для отрисовки волшебников
 var wizardsNames = [
   'Иван',
@@ -57,18 +59,36 @@ var setupOpen = function () {
   userDialog.classList.remove('hidden');
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
   SETUP_CLOSE.addEventListener('click', setupClose);
-};
-
-var setupClose = function () {
-  userDialog.classList.add('hidden');
-  userDialog.querySelector('.setup-similar').classList.add('hidden');
+  document.addEventListener('keydown', onSetupEscPress);
 };
 
 // функция для закрытия попапа
+var setupClose = function () {
+  userDialog.classList.add('hidden');
+  userDialog.querySelector('.setup-similar').classList.add('hidden');
+  document.removeEventListener('keydown', onSetupEscPress);
+
+};
+
+var onSetupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    setupClose();
+  }
+};
 
 //  показываем попап
 SETUP_OPEN.addEventListener('click', setupOpen);
+SETUP_OPEN.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    setupOpen();
+  }
+});
 
+SETUP_CLOSE.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    setupClose();
+  }
+});
 
 // функция для отрисовки похожих волшебников
 var showSimilarWizards = function () {
