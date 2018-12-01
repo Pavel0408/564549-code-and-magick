@@ -11,7 +11,6 @@ var COAT_COLOR_INPUT = document.querySelector('input[name=coat-color]');
 var FIREBALL_COLOR_INPUT = document.querySelector('input[name=fireball-color]');
 var EYES_COLOR_INPUT = document.querySelector('input[name=eyes-color]');
 
-
 //  массивы с моковыми даннми для отрисовки волшебников
 var wizardsNames = [
   'Иван',
@@ -100,9 +99,14 @@ SETUP_OPEN.addEventListener('keydown', function (evt) {
   }
 });
 
+// проверяем, в фокусе ли поле ввода имени
+var isUserNameInFocus = function () {
+  return document.querySelector('input[name=username]:focus');
+};
+
 // закрываем попап с клавиатуры
 var onSetupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && !(isUserNameInFocus())) {
     setupClose();
   }
 };
