@@ -12,7 +12,7 @@ var FIREBALL_COLOR_INPUT = document.querySelector('input[name=fireball-color]');
 var EYES_COLOR_INPUT = document.querySelector('input[name=eyes-color]');
 
 //  массивы с моковыми даннми для отрисовки волшебников
-var wizardsNames = [
+var WIZARDS_NAMES = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -23,7 +23,7 @@ var wizardsNames = [
   'Вашингтон'
 ];
 
-var wizardsSurnames = [
+var WIZARDS_SURNAMES = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -34,7 +34,7 @@ var wizardsSurnames = [
   'Ирвинг'
 ];
 
-var coatColors = [
+var COAT_COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -43,7 +43,7 @@ var coatColors = [
   'rgb(0, 0, 0)'
 ];
 
-var eyesColors = [
+var EYES_COLORS = [
   'black',
   'red',
   'blue',
@@ -51,7 +51,7 @@ var eyesColors = [
   'green'
 ];
 
-var fireballColors = [
+var FIREBALL_COLORS = [
   '#ee4830',
   '#30a8ee',
   '#5ce6c0',
@@ -86,7 +86,6 @@ var setupOpen = function () {
 // функция для закрытия попапа
 var setupClose = function () {
   userDialog.classList.add('hidden');
-  userDialog.querySelector('.setup-similar').classList.add('hidden');
   document.removeEventListener('keydown', onSetupEscPress);
 };
 
@@ -121,10 +120,10 @@ SETUP_CLOSE.addEventListener('keydown', function (evt) {
 var showSimilarWizards = function () {
 
   //  копируем массивы в функцию, чтобы не изменять исходные данные
-  var similarWizardsNames = wizardsNames.slice();
-  var similarWizardsSurnames = wizardsSurnames.slice();
-  var similarCoatColors = coatColors.slice();
-  var similarEyesColors = eyesColors.slice();
+  var similarWizardsNames = WIZARDS_NAMES.slice();
+  var similarWizardsSurnames = WIZARDS_SURNAMES.slice();
+  var similarCoatColors = COAT_COLORS.slice();
+  var similarEyesColors = EYES_COLORS.slice();
   var similarWizards = [];
 
   // отрисовываем объект волшебника в HTML
@@ -166,15 +165,15 @@ var colorChange = function (elem, arr, input) {
 
 
 WIZARD_EYES.addEventListener('click', function () {
-  colorChange(WIZARD_EYES, eyesColors, EYES_COLOR_INPUT);
+  colorChange(WIZARD_EYES, EYES_COLORS, EYES_COLOR_INPUT);
 });
 
 WIZARD_COAT.addEventListener('click', function () {
-  colorChange(WIZARD_COAT, coatColors, COAT_COLOR_INPUT);
+  colorChange(WIZARD_COAT, COAT_COLORS, COAT_COLOR_INPUT);
 });
 
 FIREBALLS.addEventListener('click', function () {
-  colorChange(FIREBALLS, fireballColors, FIREBALL_COLOR_INPUT);
+  colorChange(FIREBALLS, FIREBALL_COLORS, FIREBALL_COLOR_INPUT);
 });
 
 
