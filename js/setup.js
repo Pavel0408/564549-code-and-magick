@@ -84,7 +84,6 @@ var setupOpen = function () {
   userDialog.classList.remove('hidden');
   userDialog.style.left = startCoords.x;
   userDialog.style.top = startCoords.y;
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
   SETUP_CLOSE.addEventListener('click', setupClose);
   document.addEventListener('keydown', onSetupEscPress);
 };
