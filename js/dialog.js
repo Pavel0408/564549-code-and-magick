@@ -51,9 +51,9 @@
         var onClickPreventDefault = function (clickEvt) {
           var endCoordsY = setupDialogElement.style.top;
           var endCoordsX = setupDialogElement.style.left;
-          if ((Math.abs(Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY))) > minSift)
-            &&
-            (Math.abs(Math.abs(parseFloat(startSetupCorrdsX) - parseFloat(endCoordsX))) > minSift)) {
+          if ((Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY)) > minSift)
+            ||
+            (Math.abs(parseFloat(startSetupCorrdsX) - parseFloat(endCoordsX)) > minSift)) {
 
             clickEvt.preventDefault();
           }
