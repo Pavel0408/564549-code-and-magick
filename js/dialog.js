@@ -1,10 +1,10 @@
 'use strict';
 (function () {
-  var dragged;
+  var dragged = false;
   var setupDialogElement = document.querySelector('.setup');
-  var startSetupCorrdsY;
+  var startSetupCorrdsY = 80;
   var startSetupCorrdsX = 629;
-  var minSift = 10;
+  var MIN_SHIFT = 10;
 
   var dialogHandler = setupDialogElement.querySelector('.upload');
 
@@ -19,12 +19,9 @@
       y: evt.clientY
     };
 
-    dragged = false;
-
     var onMouseMove = function (moveEvt) {
 
       moveEvt.preventDefault();
-      dragged = true;
 
       var shift = {
         x: startCoords.x - moveEvt.clientX,
@@ -39,6 +36,14 @@
       setupDialogElement.style.top = (setupDialogElement.offsetTop - shift.y) + 'px';
       setupDialogElement.style.left = (setupDialogElement.offsetLeft - shift.x) + 'px';
 
+      var endCoordsY = setupDialogElement.style.top;
+      var endCoordsX = setupDialogElement.style.left;
+      if
+      ((Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY)) > MIN_SHIFT)
+        ||
+        (Math.abs(parseFloat(startSetupCorrdsX) - parseFloat(endCoordsX)) > MIN_SHIFT)) {
+        dragged = true;
+      }
     };
 
     var onMouseUp = function (upEvt) {
@@ -49,25 +54,16 @@
 
       if (dragged) {
         var onClickPreventDefault = function (clickEvt) {
-          var endCoordsY = setupDialogElement.style.top;
-          var endCoordsX = setupDialogElement.style.left;
-          if ((Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY)) > minSift)
-            ||
-            (Math.abs(parseFloat(startSetupCorrdsX) - parseFloat(endCoordsX)) > minSift)) {
-
-            clickEvt.preventDefault();
-          }
+          clickEvt.preventDefault();
 
           dialogHandler.removeEventListener('click', onClickPreventDefault);
         };
         dialogHandler.addEventListener('click', onClickPreventDefault);
       }
-
+      dragged = false;
     };
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-
-
 })();
