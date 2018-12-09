@@ -77,8 +77,13 @@ var randomIndex = function (arr) {
 
 //  функция для показа попапа
 var setupOpen = function () {
+  var startCoords = {
+    y: '80px',
+    x: '50%'
+  };
   userDialog.classList.remove('hidden');
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  userDialog.style.left = startCoords.x;
+  userDialog.style.top = startCoords.y;
   SETUP_CLOSE.addEventListener('click', setupClose);
   document.addEventListener('keydown', onSetupEscPress);
 };
