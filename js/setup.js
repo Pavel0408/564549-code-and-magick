@@ -1,9 +1,5 @@
 'use strict';
 var WIZARDS_QUANTITY = 4;
-var SETUP_OPEN = document.querySelector('.setup-open');
-var SETUP_CLOSE = document.querySelector('.setup-close');
-var ESC_KEYCODE = 27;
-var ENTER_KEYCODE = 13;
 var WIZARD_EYES = document.querySelector('.wizard-eyes');
 var WIZARD_COAT = document.querySelector('.wizard-coat');
 var FIREBALLS = document.querySelector('.setup-fireball-wrap');
@@ -69,58 +65,6 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
-//  поиск случайного элемента в массиве
-var randomIndex = function (arr) {
-  return Math.floor(Math.random() * arr.length);
-};
-
-
-//  функция для показа попапа
-var setupOpen = function () {
-  var startCoords = {
-    y: '80px',
-    x: '50%'
-  };
-  userDialog.classList.remove('hidden');
-  userDialog.style.left = startCoords.x;
-  userDialog.style.top = startCoords.y;
-  SETUP_CLOSE.addEventListener('click', setupClose);
-  document.addEventListener('keydown', onSetupEscPress);
-};
-
-// функция для закрытия попапа
-var setupClose = function () {
-  userDialog.classList.add('hidden');
-  document.removeEventListener('keydown', onSetupEscPress);
-};
-
-
-//  показываем попап
-SETUP_OPEN.addEventListener('click', setupOpen);
-SETUP_OPEN.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE) {
-    setupOpen();
-  }
-});
-
-// проверяем, в фокусе ли поле ввода имени
-var isUserNameInFocus = function () {
-  return document.querySelector('input[name=username]:focus');
-};
-
-// закрываем попап с клавиатуры
-var onSetupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && !(isUserNameInFocus())) {
-    setupClose();
-  }
-};
-
-SETUP_CLOSE.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEYCODE) {
-    setupClose();
-  }
-});
-
 // функция для отрисовки похожих волшебников
 var showSimilarWizards = function () {
 
@@ -142,12 +86,12 @@ var showSimilarWizards = function () {
 
   //  формируем массив объектов похожих волшебников и добавляем их во фрагмент
   for (var i = 0; i < WIZARDS_QUANTITY; i++) {
-    var nameIndex = randomIndex(similarWizardsNames);
-    var surnameIndex = randomIndex(similarWizardsSurnames);
+    var nameIndex = window.utilities.randomIndex(similarWizardsNames);
+    var surnameIndex = window.utilities.randomIndex(similarWizardsSurnames);
     var wizard = {
       name: similarWizardsNames[nameIndex] + ' ' + similarWizardsSurnames[surnameIndex],
-      coatColor: similarCoatColors[randomIndex(similarCoatColors)],
-      eyesColor: similarEyesColors[randomIndex(similarEyesColors)]
+      coatColor: similarCoatColors[window.utilities.randomIndex(similarCoatColors)],
+      eyesColor: similarEyesColors[window.utilities.randomIndex(similarEyesColors)]
     };
     similarWizardsNames.splice(nameIndex, 1);
     similarWizardsSurnames.splice(surnameIndex, 1);
@@ -162,7 +106,7 @@ var showSimilarWizards = function () {
 
 // функция смены цветов мантии, глаз, фаерболов по клику;
 var colorChange = function (elem, arr, input) {
-  var randomColor = arr[randomIndex(arr)];
+  var randomColor = arr[window.utilities.randomIndex(arr)];
   elem.style.fill = randomColor;
   elem.style.background = randomColor;
   input.value = randomColor;
