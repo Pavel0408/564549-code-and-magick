@@ -28,7 +28,6 @@
   var fragment = document.createDocumentFragment();
   var userDialog = document.querySelector('.setup');
 
-
   var similarListElement = userDialog.querySelector('.setup-similar-list');
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')

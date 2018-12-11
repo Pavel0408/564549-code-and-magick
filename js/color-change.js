@@ -14,7 +14,6 @@ var colorChange = function (elem, arr, input) {
   input.value = randomColor;
 };
 
-
 WIZARD_EYES.addEventListener('click', function () {
   colorChange(WIZARD_EYES, window.genralData.EYES_COLORS, EYES_COLOR_INPUT);
 });

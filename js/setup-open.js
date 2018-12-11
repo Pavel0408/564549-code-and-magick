@@ -25,7 +25,6 @@
     document.removeEventListener('keydown', onSetupEscPress);
   };
 
-
   //  показываем попап
   SETUP_OPEN.addEventListener('click', setupOpen);
   SETUP_OPEN.addEventListener('keydown', function (evt) {
