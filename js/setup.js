@@ -2,29 +2,6 @@
 (function () {
   var WIZARDS_QUANTITY = 4;
 
-  //  массивы с моковыми даннми для отрисовки волшебников
-  var WIZARDS_NAMES = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var WIZARDS_SURNAMES = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
-
   var fragment = document.createDocumentFragment();
   var userDialog = document.querySelector('.setup');
 
@@ -38,10 +15,10 @@
   var showSimilarWizards = function () {
 
     //  копируем массивы в функцию, чтобы не изменять исходные данные
-    var similarWizardsNames = WIZARDS_NAMES.slice();
-    var similarWizardsSurnames = WIZARDS_SURNAMES.slice();
-    var similarCoatColors = window.genralData.COAT_COLORS.slice();
-    var similarEyesColors = window.genralData.EYES_COLORS.slice();
+    var similarWizardsNames = window.constants.WIZARDS_NAMES.slice();
+    var similarWizardsSurnames = window.constants.WIZARDS_SURNAMES.slice();
+    var similarCoatColors = window.constants.COAT_COLORS.slice();
+    var similarEyesColors = window.constants.EYES_COLORS.slice();
     var similarWizards = [];
 
     // отрисовываем объект волшебника в HTML

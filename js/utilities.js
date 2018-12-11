@@ -4,7 +4,7 @@
   var randomIndex = function (arr) {
     return Math.floor(Math.random() * arr.length);
   };
-  var utilities = {};
-  utilities.randomIndex = randomIndex;
-  window.utilities = utilities;
+  window.utilities = {
+    randomIndex: randomIndex
+  };
 })();
