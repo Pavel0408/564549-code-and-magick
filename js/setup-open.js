@@ -18,7 +18,7 @@
     SETUP_CLOSE.addEventListener('click', setupClose);
     document.addEventListener('keydown', onSetupEscPress);
     if (document.querySelector('.setup-similar-item') === null) {
-      document.setup();
+      window.setup();
     }
   };
 
@@ -57,6 +57,5 @@
       setupClose();
     }
   });
-  document.setupClose = setupClose;
 })();
 

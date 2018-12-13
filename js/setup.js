@@ -64,5 +64,5 @@
       evt.preventDefault();
     });
   };
-  document.setup = setup;
+  window.setup = setup;
 })();
