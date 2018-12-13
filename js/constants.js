@@ -25,34 +25,9 @@
     '#e6e848'
   ];
 
-  //  массивы с моковыми даннми для отрисовки волшебников
-  var WIZARDS_NAMES = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var WIZARDS_SURNAMES = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
-
   window.constants = {
     COAT_COLORS: COAT_COLORS,
     EYES_COLORS: EYES_COLORS,
     FIREBALL_COLORS: FIREBALL_COLORS,
-    WIZARDS_NAMES: WIZARDS_NAMES,
-    WIZARDS_SURNAMES: WIZARDS_SURNAMES
   };
 })();
