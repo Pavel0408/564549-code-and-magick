@@ -58,7 +58,7 @@
 
   var setup = function () {
 
-    window.backend.load(window.constants.urls.load, sucsessHandler, errorHandler);
+    window.backend.load(sucsessHandler, errorHandler);
     form.addEventListener('submit', function (evt) {
       window.backend.save(new FormData(form), formSucsessHandler, errorHandler);
       evt.preventDefault();

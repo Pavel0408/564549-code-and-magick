@@ -2,7 +2,8 @@
 (function () {
 
   // функция для загрузки данных с сервера
-  var load = function (url, onLoad, onError) {
+  var load = function (onLoad, onError) {
+    var URL = window.constants.urls.load;
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.addEventListener('load', function () {
@@ -19,7 +20,7 @@
       onError('Запрос не успел выполнится за ' + xhr.timeout + 'мс');
     });
     xhr.timeout = 10000;
-    xhr.open('GET', url);
+    xhr.open('GET', URL);
     xhr.send();
   };
 
