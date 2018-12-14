@@ -24,7 +24,7 @@
   };
 
   // функция для отправки формы
-  var URL = 'https://js.dump.academy/code-and-magick';
+  var URL = window.constants.urls.save;
   var save = function (data, onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
