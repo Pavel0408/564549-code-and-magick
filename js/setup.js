@@ -1,55 +1,68 @@
 'use strict';
 (function () {
   var WIZARDS_QUANTITY = 4;
-
   var fragment = document.createDocumentFragment();
   var userDialog = document.querySelector('.setup');
-
+  var similarWizards = [];
   var similarListElement = userDialog.querySelector('.setup-similar-list');
+  var form = userDialog.querySelector('.setup-wizard-form');
 
   var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content
     .querySelector('.setup-similar-item');
 
+  var sucsessHandler = function (wizards) {
+    similarWizards = wizards.slice();
+    window.similarWizards = similarWizards;
+    showSimilarWizards();
+  };
+
+  var errorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.classList.add('error-message');
+    node.style.fontSize = '40px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+
   // функция для отрисовки похожих волшебников
   var showSimilarWizards = function () {
-
-    //  копируем массивы в функцию, чтобы не изменять исходные данные
-    var similarWizardsNames = window.constants.WIZARDS_NAMES.slice();
-    var similarWizardsSurnames = window.constants.WIZARDS_SURNAMES.slice();
-    var similarCoatColors = window.constants.COAT_COLORS.slice();
-    var similarEyesColors = window.constants.EYES_COLORS.slice();
-    var similarWizards = [];
 
     // отрисовываем объект волшебника в HTML
     var renderWizard = function (wizard) {
       var wizardElement = similarWizardTemplate.cloneNode(true);
       wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-      wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+      wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
       wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
       return wizardElement;
     };
 
-    //  формируем массив объектов похожих волшебников и добавляем их во фрагмент
+    //  добавляем похожих волшебников во фрагмент
     for (var i = 0; i < WIZARDS_QUANTITY; i++) {
-      var nameIndex = window.utilities.randomIndex(similarWizardsNames);
-      var surnameIndex = window.utilities.randomIndex(similarWizardsSurnames);
-      var wizard = {
-        name: similarWizardsNames[nameIndex] + ' ' + similarWizardsSurnames[surnameIndex],
-        coatColor: similarCoatColors[window.utilities.randomIndex(similarCoatColors)],
-        eyesColor: similarEyesColors[window.utilities.randomIndex(similarEyesColors)]
-      };
-      similarWizardsNames.splice(nameIndex, 1);
-      similarWizardsSurnames.splice(surnameIndex, 1);
-      similarWizards.push(wizard);
-      fragment.appendChild(renderWizard(wizard));
+      fragment.appendChild(renderWizard(similarWizards[i]));
     }
 
     // добавляем волшебников на страницу
     similarListElement.appendChild(fragment);
-
   };
 
-  //  запускаем отрисовку похожих волшебников
-  showSimilarWizards();
+  var formSucsessHandler = function () {
+    userDialog.classList.add('hidden');
+  };
+
+  var setup = function () {
+
+    window.backend.load(sucsessHandler, errorHandler);
+    form.addEventListener('submit', function (evt) {
+      window.backend.save(new FormData(form), formSucsessHandler, errorHandler);
+      evt.preventDefault();
+    });
+  };
+  window.setup = setup;
 })();

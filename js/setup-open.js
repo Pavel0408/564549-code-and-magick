@@ -17,11 +17,18 @@
     userDialog.style.top = startCoords.y;
     SETUP_CLOSE.addEventListener('click', setupClose);
     document.addEventListener('keydown', onSetupEscPress);
+    if (document.querySelector('.setup-similar-item') === null) {
+      window.setup();
+    }
   };
 
   // функция для закрытия попапа
   var setupClose = function () {
+    var errorMessage = document.querySelector('.error-message');
     userDialog.classList.add('hidden');
+    if (errorMessage !== null) {
+      errorMessage.remove();
+    }
     document.removeEventListener('keydown', onSetupEscPress);
   };
 
