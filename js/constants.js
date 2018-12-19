@@ -41,6 +41,8 @@
     HISTROGRAM_GAP: 10,
     RECT_WIDTH: 40,
     HISTOGRAM_COLUMN_WDTH: 90,
+    DEBOUNCE_INTERVAL: 500,
+    WIZARDS_QUANTITY: 4,
     urls: {
       load: 'https://js.dump.academy/code-and-magick/data',
       save: 'https://js.dump.academy/code-and-magick'

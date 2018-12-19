@@ -1,6 +1,5 @@
 'use strict';
 (function () {
-  var WIZARDS_QUANTITY = 4;
   var userDialog = document.querySelector('.setup');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content
     .querySelector('.setup-similar-item');
@@ -20,7 +19,7 @@
     };
 
     //  добавляем похожих волшебников во фрагмент
-    for (var i = 0; i < WIZARDS_QUANTITY; i++) {
+    for (var i = 0; i < window.constants.WIZARDS_QUANTITY; i++) {
       fragment.appendChild(renderWizard(arrWizards[i]));
     }
 
