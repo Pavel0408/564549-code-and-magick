@@ -54,15 +54,17 @@
       item.remove();
     });
 
-    window.showSimilarWizards(window.similarWizards.slice().
-      sort(function (left, right) {
-        var rankDiff = getRank(right) - getRank(left);
-        if (rankDiff === 0) {
-          rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
-        }
+    var someSimilarWizards = window.similarWizards.slice().
+    sort(function (left, right) {
+      var rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
+      }
 
-        return rankDiff;
-      }));
+      return rankDiff;
+    });
+
+    window.showSimilarWizards(someSimilarWizards);
   };
   window.updateWizards = updateWizards;
 })();
