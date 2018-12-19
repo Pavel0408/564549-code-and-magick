@@ -1,5 +1,12 @@
 'use strict';
 (function () {
+  /**
+    * Модуль color-change
+    *
+    * Меняет цвет мантии, цвет файрблоа и цвет глаз по клику, показывает похожих волшебников
+    * @param window.updateWizards - показывает похожих волшебников
+   */
+
   var WIZARD_EYES = document.querySelector('.wizard-eyes');
   var WIZARD_COAT = document.querySelector('.wizard-coat');
   var FIREBALLS = document.querySelector('.setup-fireball-wrap');

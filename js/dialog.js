@@ -1,5 +1,11 @@
 'use strict';
 (function () {
+  /**
+    * Модуль dialog
+    *
+    *Делает подвижной форму настроек персонажа
+   */
+
   var dragged = false;
   var setupDialogElement = document.querySelector('.setup');
   var startSetupCorrdsY = 80;
@@ -38,8 +44,7 @@
 
       var endCoordsY = setupDialogElement.style.top;
       var endCoordsX = setupDialogElement.style.left;
-      if
-      ((Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY)) > MIN_SHIFT)
+      if ((Math.abs(parseFloat(startSetupCorrdsY) - parseFloat(endCoordsY)) > MIN_SHIFT)
         ||
         (Math.abs(parseFloat(startSetupCorrdsX) - parseFloat(endCoordsX)) > MIN_SHIFT)) {
         dragged = true;

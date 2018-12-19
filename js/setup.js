@@ -1,5 +1,12 @@
 'use strict';
 (function () {
+/**
+  * Модуль setup
+  *
+  * Содержит обработчики успешной загрузки и ошибок формы и похожих волшебников
+  * @param window.setup - запускает загрузку похожих волшебников и обработку формы
+ */
+
   var userDialog = document.querySelector('.setup');
   var similarWizards = [];
   var form = userDialog.querySelector('.setup-wizard-form');

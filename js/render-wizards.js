@@ -1,4 +1,10 @@
 'use strict';
+/**
+  * Модуль renderWizards
+  *
+  * Отрисовывает похожих волшебников
+  * @param window.showSimilarWizards - экспортирует в глобальную область функцию дял отрисовки похожих волшебников
+ */
 (function () {
   var userDialog = document.querySelector('.setup');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content

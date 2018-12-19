@@ -1,5 +1,10 @@
 'use strict';
 (function () {
+/**
+  * Модуль stat
+  *
+  * Показывает статистику игры в сравнении с другими игроками
+ */
 
   //  функция отрисовки облака
   var renderCloud = function (ctx, x, y, color) {

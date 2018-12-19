@@ -1,5 +1,12 @@
 'use strict';
 (function () {
+  /**
+    * Модуль backend
+    *
+    * Содержит функции для взаимодействия с сервером
+    * @param window.backend.load - загружает с сервера похожих волшебников
+    * @param window.backend.save - отправляет на сервер данные формы
+   */
 
   // функция для загрузки данных с сервера
   var load = function (onLoad, onError) {

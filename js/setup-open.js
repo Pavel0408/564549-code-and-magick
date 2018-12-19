@@ -1,5 +1,10 @@
 'use strict';
 (function () {
+/**
+  * Модуль setup-open
+  *
+  * Обеспечивает открытие и закрытие окна формы
+ */
   var SETUP_OPEN = document.querySelector('.setup-open');
   var SETUP_CLOSE = document.querySelector('.setup-close');
   var ESC_KEYCODE = 27;

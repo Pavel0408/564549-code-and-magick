@@ -1,4 +1,11 @@
 'use strict';
+/**
+  * Модуль utilities
+  *
+  * содрежит полезные функции
+  * @param window.utilities.randomIndex - возвращает случайный элемент массива
+ */
+
 (function () {
   //  поиск случайного элемента в массиве
   var randomIndex = function (arr) {

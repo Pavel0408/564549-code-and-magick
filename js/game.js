@@ -1,4 +1,9 @@
 'use strict';
+/**
+  * Модуль game
+  *
+  * Обеспечивает игровой процесс
+ */
 
 window.GameConstants = {
   Fireball: {
